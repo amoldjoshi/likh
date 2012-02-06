@@ -1,0 +1,39 @@
+<% @page_heading = _('Database migration') %>
+<% subtabs_for(:settings) %>
+
+<div class='widget-container'>
+  <h3 class='light'><span class='ui-icon ui-icon-gear'></span> <%= _("Information")%></h3>
+  <div class='widget-content'>
+    <p>
+      <strong><%= _("Current database version")%>:</strong>
+      <%= @current_version %>
+    </p>
+
+    <% unless @needed_migrations.blank? %>
+    <p>
+      <strong><%= _("New database version")%>:</strong>
+      <%= @needed_version %>
+    </p>
+    <p>
+      <label><%= _("Your database supports migrations")%>:</label>
+      <%= @support ? _('yes') : _('no') %>
+    </p>
+    <h3><%= _("Needed migrations")%></h3>
+    <ul>
+      <% for migration in @needed_migrations %>
+      <li><%= migration.humanize %></li>
+      <% end %>
+    </ul>
+    <% end %>
+
+    <%= form_tag :action => 'migrate' do %>
+      <% if @current_version == @needed_version %>
+      <div class='info'>
+        <p><span class='ui-icon ui-icon-info' style='float: left; margin-right: 0.3em;'></span><strong><%= _("You are up to date!")%></strong></p>
+      </div>
+      <% else %>
+      <%= save(_("Update database now")) %>  <small><%= _("may take a moment")%></small>
+      <% end %>
+    <% end %>
+  </div>
+</div>

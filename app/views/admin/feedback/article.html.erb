@@ -1,0 +1,35 @@
+<% @page_heading = _("Comments for %s", @article.title) %>
+<% @link_to_new = link_to(_("Add a comment"), '#comment', {:id => 'dialog-link', :class => 'button'}) %>
+
+<% subtabs_for(:articles) %>
+<%= form_tag({:action => 'bulkops'}, :method => :post) do %>
+
+<%= hidden_field 'article_id', @article.id %>
+<%= render 'button', { :position => 'top' } %>
+
+<br class='clear' />
+<table class='settings'>
+  <tr>
+    <th class='first'><input type="checkbox" name="checkall" id="checkall" onclick="check_all(this);"/></th>
+    <th><%= _("Status")%></th>
+    <th><%= _("Comment Author")%></th>
+    <th><%= _("Comment")%></th>
+  </tr>
+  <%= render_void_table(@feedback.size, 5) %>
+
+  <% @feedback.each do |comment| %>
+  <tr <%= alternate_class %> id='<%= "feedback_#{comment.id}" %>'>
+    <% if comment.state.to_s.downcase == 'spam'  %>
+      <%= render 'spam', {:comment => comment} %>
+    <% else %>
+      <%= render 'ham', {:comment => comment} %>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
+<%end%>
+
+<%= form_tag :action => "create" do %>
+  <%= render "form" %>
+  <%= cancel_or_save %>
+<% end %>
