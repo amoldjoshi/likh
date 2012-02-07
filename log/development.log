@@ -3091,3 +3091,1948 @@ Started GET "/images/theme/rss.png" for 127.0.0.1 at 2012-02-05 17:42:01 -0800
   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
 Sent file c:/ruby/bin/likh/themes/true-blue-3/images/rss.png (0.0ms)
 Completed 200 OK in 16ms
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at c:/ruby/bin/likh/config/environment.rb:5)
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+TypoPlugins: just registered plugin [TypoPlugins::Gravatar] for :avatar target.
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-06 08:54:38 -0800
+  Processing by ArticlesController#index as 
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:54:39.088989')
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mArticle Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Article' AND (published = 't' AND published_at < '2012-02-06 16:54:39.291794') ORDER BY published_at DESC LIMIT 10 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mTextFilter Load (0.0ms)[0m  SELECT "text_filters".* FROM "text_filters" WHERE "text_filters"."id" = 5 LIMIT 1
+Rendered themes/true-blue-3/views/articles/_article_excerpt.html.erb (46.8ms)
+Rendered articles/_article_content.html.erb (46.8ms)
+Rendered articles/_protected_article_content.html.erb (62.4ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND ("feedback".article_id = 1 AND ("feedback"."published" = 't'))[0m
+Rendered themes/true-blue-3/views/articles/_article.html.erb (249.6ms)
+  [1m[35mSidebar Load (0.0ms)[0m  SELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't')[0m
+  [1m[35mPage Load (15.6ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't') ORDER BY title
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered vendor/plugins/page_sidebar/app/views/page_sidebar/_content.html.erb (78.0ms)
+  [1m[35mCategory Load (0.0ms)[0m  
+ SELECT categories.id, categories.name, categories.permalink, categories.position, COUNT(articles.id) AS article_counter
+ FROM categories categories
+ LEFT OUTER JOIN categorizations articles_categories
+ ON articles_categories.category_id = categories.id
+ LEFT OUTER JOIN contents articles
+ ON (articles_categories.article_id = articles.id AND articles.published = 't')
+ GROUP BY categories.id, categories.name, categories.position, categories.permalink
+ ORDER BY position
+ 
+Rendered vendor/plugins/category_sidebar/app/views/category_sidebar/_content.html.erb (15.6ms)
+  [1m[36mContent Load (0.0ms)[0m  [1mselect count(*) as count, strftime('%Y', published_at) as year, strftime('%m', published_at) as month from contents where type='Article' and published = 't' and published_at < '2012-02-06 16:54:39.900209' group by year,month order by year desc,month desc limit 10 [0m
+Rendered vendor/plugins/archives_sidebar/app/views/archives_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/static_sidebar/app/views/static_sidebar/_content.html.erb (15.6ms)
+Rendered vendor/plugins/meta_sidebar/app/views/meta_sidebar/_content.html.erb (0.0ms)
+  [1m[35mPage Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered themes/true-blue-3/views/articles/index.html.erb within layouts/default (904.8ms)
+Completed 200 OK in 1217ms (Views: 920.4ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2012-02-06 08:54:40 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#stylesheets as 
+  Parameters: {"filename"=>"style.css"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:54:41.304245')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/stylesheets/style.css (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/rss.png" for 127.0.0.1 at 2012-02-06 08:54:41 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"rss.png"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:54:42.255870')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/rss.png (15.6ms)
+Completed 200 OK in 31ms
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2012-02-06 08:54:42 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"background.gif"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:54:43.207494')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/background.gif (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/pages/about" for 127.0.0.1 at 2012-02-06 08:54:52 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ArticlesController#view_page as HTML
+  Parameters: {"name"=>"about"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:54:53.340956')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36mPage Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."name" = 'about' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mTextFilter Load (0.0ms)[0m  [1mSELECT "text_filters".* FROM "text_filters" WHERE "text_filters"."id" = 5 LIMIT 1[0m
+  [1m[35mSidebar Load (0.0ms)[0m  SELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't')[0m
+  [1m[35mPage Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't') ORDER BY title
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered vendor/plugins/page_sidebar/app/views/page_sidebar/_content.html.erb (15.6ms)
+  [1m[35mCategory Load (0.0ms)[0m  
+ SELECT categories.id, categories.name, categories.permalink, categories.position, COUNT(articles.id) AS article_counter
+ FROM categories categories
+ LEFT OUTER JOIN categorizations articles_categories
+ ON articles_categories.category_id = categories.id
+ LEFT OUTER JOIN contents articles
+ ON (articles_categories.article_id = articles.id AND articles.published = 't')
+ GROUP BY categories.id, categories.name, categories.position, categories.permalink
+ ORDER BY position
+ 
+Rendered vendor/plugins/category_sidebar/app/views/category_sidebar/_content.html.erb (15.6ms)
+  [1m[36mContent Load (0.0ms)[0m  [1mselect count(*) as count, strftime('%Y', published_at) as year, strftime('%m', published_at) as month from contents where type='Article' and published = 't' and published_at < '2012-02-06 16:54:53.652964' group by year,month order by year desc,month desc limit 10 [0m
+Rendered vendor/plugins/archives_sidebar/app/views/archives_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/static_sidebar/app/views/static_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/meta_sidebar/app/views/meta_sidebar/_content.html.erb (0.0ms)
+  [1m[35mPage Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered themes/true-blue-3/views/articles/view_page.html.erb within layouts/default (530.4ms)
+Completed 200 OK in 640ms (Views: 546.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2012-02-06 08:54:53 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#stylesheets as 
+  Parameters: {"filename"=>"style.css"}
+  [1m[36mTrigger Load (15.6ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:54:54.885395')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/stylesheets/style.css (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/rss.png" for 127.0.0.1 at 2012-02-06 08:54:54 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"rss.png"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:54:55.883821')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/rss.png (0.0ms)
+Completed 200 OK in 31ms
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2012-02-06 08:54:55 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"background.gif"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:54:56.835445')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/background.gif (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/categories" for 127.0.0.1 at 2012-02-06 08:54:59 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by CategoriesController#index as HTML
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:55:00.225934')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCategory Load (0.0ms)[0m  SELECT "categories".* FROM "categories" ORDER BY position ASC LIMIT 100 OFFSET 0
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" INNER JOIN "categorizations" ON "contents".id = "categorizations".article_id WHERE "contents"."type" = 'Article' AND (("categorizations".category_id = 1)) ORDER BY published_at DESC, created_at DESC[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mSidebar Load (0.0ms)[0m  [1mSELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't')
+  [1m[36mPage Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't') ORDER BY title[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Rendered vendor/plugins/page_sidebar/app/views/page_sidebar/_content.html.erb (78.0ms)
+  [1m[36mCategory Load (0.0ms)[0m  [1m
+ SELECT categories.id, categories.name, categories.permalink, categories.position, COUNT(articles.id) AS article_counter
+ FROM categories categories
+ LEFT OUTER JOIN categorizations articles_categories
+ ON articles_categories.category_id = categories.id
+ LEFT OUTER JOIN contents articles
+ ON (articles_categories.article_id = articles.id AND articles.published = 't')
+ GROUP BY categories.id, categories.name, categories.position, categories.permalink
+ ORDER BY position
+ [0m
+Rendered vendor/plugins/category_sidebar/app/views/category_sidebar/_content.html.erb (0.0ms)
+  [1m[35mContent Load (0.0ms)[0m  select count(*) as count, strftime('%Y', published_at) as year, strftime('%m', published_at) as month from contents where type='Article' and published = 't' and published_at < '2012-02-06 16:55:00.771948' group by year,month order by year desc,month desc limit 10 
+Rendered vendor/plugins/archives_sidebar/app/views/archives_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/static_sidebar/app/views/static_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/meta_sidebar/app/views/meta_sidebar/_content.html.erb (0.0ms)
+  [1m[36mPage Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Rendered themes/true-blue-3/views/categories/index.html.erb within layouts/default (608.4ms)
+Completed 200 OK in 874ms (Views: 764.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2012-02-06 08:55:01 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#stylesheets as 
+  Parameters: {"filename"=>"style.css"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:55:02.004379')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/stylesheets/style.css (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2012-02-06 08:55:02 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"background.gif"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:55:02.971604')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/background.gif (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/rss.png" for 127.0.0.1 at 2012-02-06 08:55:02 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"rss.png"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:55:03.923228')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/rss.png (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-06 08:55:04 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ArticlesController#index as HTML
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:55:05.291265')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mArticle Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Article' AND (published = 't' AND published_at < '2012-02-06 16:55:05.306865') ORDER BY published_at DESC LIMIT 10 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mTextFilter Load (0.0ms)[0m  SELECT "text_filters".* FROM "text_filters" WHERE "text_filters"."id" = 5 LIMIT 1
+Rendered themes/true-blue-3/views/articles/_article_excerpt.html.erb (46.8ms)
+Rendered articles/_article_content.html.erb (46.8ms)
+Rendered articles/_protected_article_content.html.erb (62.4ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND ("feedback".article_id = 1 AND ("feedback"."published" = 't'))[0m
+Rendered themes/true-blue-3/views/articles/_article.html.erb (171.6ms)
+  [1m[35mSidebar Load (0.0ms)[0m  SELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't')[0m
+  [1m[35mPage Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't') ORDER BY title
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered vendor/plugins/page_sidebar/app/views/page_sidebar/_content.html.erb (78.0ms)
+  [1m[35mCategory Load (0.0ms)[0m  
+ SELECT categories.id, categories.name, categories.permalink, categories.position, COUNT(articles.id) AS article_counter
+ FROM categories categories
+ LEFT OUTER JOIN categorizations articles_categories
+ ON articles_categories.category_id = categories.id
+ LEFT OUTER JOIN contents articles
+ ON (articles_categories.article_id = articles.id AND articles.published = 't')
+ GROUP BY categories.id, categories.name, categories.position, categories.permalink
+ ORDER BY position
+ 
+Rendered vendor/plugins/category_sidebar/app/views/category_sidebar/_content.html.erb (15.6ms)
+  [1m[36mContent Load (0.0ms)[0m  [1mselect count(*) as count, strftime('%Y', published_at) as year, strftime('%m', published_at) as month from contents where type='Article' and published = 't' and published_at < '2012-02-06 16:55:05.821678' group by year,month order by year desc,month desc limit 10 [0m
+Rendered vendor/plugins/archives_sidebar/app/views/archives_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/static_sidebar/app/views/static_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/meta_sidebar/app/views/meta_sidebar/_content.html.erb (0.0ms)
+  [1m[35mPage Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered themes/true-blue-3/views/articles/index.html.erb within layouts/default (733.2ms)
+Completed 200 OK in 842ms (Views: 748.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2012-02-06 08:55:06 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#stylesheets as 
+  Parameters: {"filename"=>"style.css"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:55:07.038510')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/stylesheets/style.css (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2012-02-06 08:55:07 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"background.gif"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:55:08.052536')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/background.gif (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/rss.png" for 127.0.0.1 at 2012-02-06 08:55:08 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"rss.png"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:55:08.988560')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/rss.png (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-06 08:55:20 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ArticlesController#index as HTML
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:55:21.655686')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Article' AND (published = 't' AND published_at < '2012-02-06 16:55:21.671286') ORDER BY published_at DESC LIMIT 10 OFFSET 0[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mTextFilter Load (0.0ms)[0m  [1mSELECT "text_filters".* FROM "text_filters" WHERE "text_filters"."id" = 5 LIMIT 1[0m
+Rendered themes/true-blue-3/views/articles/_article_excerpt.html.erb (78.0ms)
+Rendered articles/_article_content.html.erb (78.0ms)
+Rendered articles/_protected_article_content.html.erb (93.6ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND ("feedback".article_id = 1 AND ("feedback"."published" = 't'))
+Rendered themes/true-blue-3/views/articles/_article.html.erb (202.8ms)
+  [1m[36mSidebar Load (0.0ms)[0m  [1mSELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't')
+  [1m[36mPage Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't') ORDER BY title[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Rendered vendor/plugins/page_sidebar/app/views/page_sidebar/_content.html.erb (31.2ms)
+  [1m[36mCategory Load (0.0ms)[0m  [1m
+ SELECT categories.id, categories.name, categories.permalink, categories.position, COUNT(articles.id) AS article_counter
+ FROM categories categories
+ LEFT OUTER JOIN categorizations articles_categories
+ ON articles_categories.category_id = categories.id
+ LEFT OUTER JOIN contents articles
+ ON (articles_categories.article_id = articles.id AND articles.published = 't')
+ GROUP BY categories.id, categories.name, categories.position, categories.permalink
+ ORDER BY position
+ [0m
+Rendered vendor/plugins/category_sidebar/app/views/category_sidebar/_content.html.erb (46.8ms)
+  [1m[35mContent Load (0.0ms)[0m  select count(*) as count, strftime('%Y', published_at) as year, strftime('%m', published_at) as month from contents where type='Article' and published = 't' and published_at < '2012-02-06 16:55:22.201700' group by year,month order by year desc,month desc limit 10 
+Rendered vendor/plugins/archives_sidebar/app/views/archives_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/static_sidebar/app/views/static_sidebar/_content.html.erb (15.6ms)
+Rendered vendor/plugins/meta_sidebar/app/views/meta_sidebar/_content.html.erb (0.0ms)
+  [1m[36mPage Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Rendered themes/true-blue-3/views/articles/index.html.erb within layouts/default (717.6ms)
+Completed 200 OK in 827ms (Views: 733.2ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2012-02-06 08:55:22 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#stylesheets as 
+  Parameters: {"filename"=>"style.css"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:55:23.402930')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/stylesheets/style.css (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2012-02-06 08:55:23 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"background.gif"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:55:24.416956')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/background.gif (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/rss.png" for 127.0.0.1 at 2012-02-06 08:55:24 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"rss.png"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:55:25.321780')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/rss.png (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/2012/02" for 127.0.0.1 at 2012-02-06 08:55:41 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ArticlesController#index as HTML
+  Parameters: {"year"=>"2012", "month"=>"02"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:55:42.139812')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mArticle Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Article' AND "contents"."published" = 't' AND ("contents"."published_at" BETWEEN '2012-02-01 08:00:00.000000' AND '2012-03-01 07:59:59.000000') ORDER BY published_at DESC LIMIT 10 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mTextFilter Load (0.0ms)[0m  SELECT "text_filters".* FROM "text_filters" WHERE "text_filters"."id" = 5 LIMIT 1
+Rendered themes/true-blue-3/views/articles/_article_excerpt.html.erb (78.0ms)
+Rendered articles/_article_content.html.erb (93.6ms)
+Rendered articles/_protected_article_content.html.erb (109.2ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND ("feedback".article_id = 1 AND ("feedback"."published" = 't'))[0m
+Rendered themes/true-blue-3/views/articles/_article.html.erb (202.8ms)
+  [1m[35mSidebar Load (0.0ms)[0m  SELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't')[0m
+  [1m[35mPage Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't') ORDER BY title
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered vendor/plugins/page_sidebar/app/views/page_sidebar/_content.html.erb (78.0ms)
+  [1m[35mCategory Load (0.0ms)[0m  
+ SELECT categories.id, categories.name, categories.permalink, categories.position, COUNT(articles.id) AS article_counter
+ FROM categories categories
+ LEFT OUTER JOIN categorizations articles_categories
+ ON articles_categories.category_id = categories.id
+ LEFT OUTER JOIN contents articles
+ ON (articles_categories.article_id = articles.id AND articles.published = 't')
+ GROUP BY categories.id, categories.name, categories.position, categories.permalink
+ ORDER BY position
+ 
+Rendered vendor/plugins/category_sidebar/app/views/category_sidebar/_content.html.erb (15.6ms)
+  [1m[36mContent Load (0.0ms)[0m  [1mselect count(*) as count, strftime('%Y', published_at) as year, strftime('%m', published_at) as month from contents where type='Article' and published = 't' and published_at < '2012-02-06 16:55:42.639025' group by year,month order by year desc,month desc limit 10 [0m
+Rendered vendor/plugins/archives_sidebar/app/views/archives_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/static_sidebar/app/views/static_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/meta_sidebar/app/views/meta_sidebar/_content.html.erb (0.0ms)
+  [1m[35mPage Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered themes/true-blue-3/views/articles/index.html.erb within layouts/default (733.2ms)
+Completed 200 OK in 827ms (Views: 748.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2012-02-06 08:55:42 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#stylesheets as 
+  Parameters: {"filename"=>"style.css"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:55:43.871456')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/stylesheets/style.css (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2012-02-06 08:55:43 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"background.gif"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:55:44.838681')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/background.gif (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/rss.png" for 127.0.0.1 at 2012-02-06 08:55:44 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"rss.png"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:55:45.805906')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/rss.png (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-06 08:56:08 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ArticlesController#index as HTML
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:56:09.092504')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Article' AND (published = 't' AND published_at < '2012-02-06 16:56:09.092504') ORDER BY published_at DESC LIMIT 10 OFFSET 0[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mTextFilter Load (0.0ms)[0m  [1mSELECT "text_filters".* FROM "text_filters" WHERE "text_filters"."id" = 5 LIMIT 1[0m
+Rendered themes/true-blue-3/views/articles/_article_excerpt.html.erb (31.2ms)
+Rendered articles/_article_content.html.erb (46.8ms)
+Rendered articles/_protected_article_content.html.erb (62.4ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND ("feedback".article_id = 1 AND ("feedback"."published" = 't'))
+Rendered themes/true-blue-3/views/articles/_article.html.erb (202.8ms)
+  [1m[36mSidebar Load (0.0ms)[0m  [1mSELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't')
+  [1m[36mPage Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't') ORDER BY title[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Rendered vendor/plugins/page_sidebar/app/views/page_sidebar/_content.html.erb (78.0ms)
+  [1m[36mCategory Load (0.0ms)[0m  [1m
+ SELECT categories.id, categories.name, categories.permalink, categories.position, COUNT(articles.id) AS article_counter
+ FROM categories categories
+ LEFT OUTER JOIN categorizations articles_categories
+ ON articles_categories.category_id = categories.id
+ LEFT OUTER JOIN contents articles
+ ON (articles_categories.article_id = articles.id AND articles.published = 't')
+ GROUP BY categories.id, categories.name, categories.position, categories.permalink
+ ORDER BY position
+ [0m
+Rendered vendor/plugins/category_sidebar/app/views/category_sidebar/_content.html.erb (15.6ms)
+  [1m[35mContent Load (0.0ms)[0m  select count(*) as count, strftime('%Y', published_at) as year, strftime('%m', published_at) as month from contents where type='Article' and published = 't' and published_at < '2012-02-06 16:56:09.607318' group by year,month order by year desc,month desc limit 10 
+Rendered vendor/plugins/archives_sidebar/app/views/archives_sidebar/_content.html.erb (46.8ms)
+Rendered vendor/plugins/static_sidebar/app/views/static_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/meta_sidebar/app/views/meta_sidebar/_content.html.erb (0.0ms)
+  [1m[36mPage Load (15.6ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Rendered themes/true-blue-3/views/articles/index.html.erb within layouts/default (795.6ms)
+Completed 200 OK in 842ms (Views: 795.6ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2012-02-06 08:56:09 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#stylesheets as 
+  Parameters: {"filename"=>"style.css"}
+  [1m[35mTrigger Load (15.6ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:56:10.824149')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/stylesheets/style.css (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/rss.png" for 127.0.0.1 at 2012-02-06 08:56:10 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"rss.png"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:56:11.775773')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/rss.png (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2012-02-06 08:56:11 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"background.gif"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 16:56:12.758598')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/background.gif (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-06 12:16:48 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ArticlesController#index as 
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:16:49.861969')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mArticle Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Article' AND (published = 't' AND published_at < '2012-02-06 20:16:49.861969') ORDER BY published_at DESC LIMIT 10 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mTextFilter Load (0.0ms)[0m  SELECT "text_filters".* FROM "text_filters" WHERE "text_filters"."id" = 5 LIMIT 1
+Rendered themes/true-blue-3/views/articles/_article_excerpt.html.erb (46.8ms)
+Rendered articles/_article_content.html.erb (46.8ms)
+Rendered articles/_protected_article_content.html.erb (62.4ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND ("feedback".article_id = 1 AND ("feedback"."published" = 't'))[0m
+Rendered themes/true-blue-3/views/articles/_article.html.erb (171.6ms)
+  [1m[35mSidebar Load (0.0ms)[0m  SELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't')[0m
+  [1m[35mPage Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't') ORDER BY title
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered vendor/plugins/page_sidebar/app/views/page_sidebar/_content.html.erb (78.0ms)
+  [1m[35mCategory Load (0.0ms)[0m  
+ SELECT categories.id, categories.name, categories.permalink, categories.position, COUNT(articles.id) AS article_counter
+ FROM categories categories
+ LEFT OUTER JOIN categorizations articles_categories
+ ON articles_categories.category_id = categories.id
+ LEFT OUTER JOIN contents articles
+ ON (articles_categories.article_id = articles.id AND articles.published = 't')
+ GROUP BY categories.id, categories.name, categories.position, categories.permalink
+ ORDER BY position
+ 
+Rendered vendor/plugins/category_sidebar/app/views/category_sidebar/_content.html.erb (0.0ms)
+  [1m[36mContent Load (0.0ms)[0m  [1mselect count(*) as count, strftime('%Y', published_at) as year, strftime('%m', published_at) as month from contents where type='Article' and published = 't' and published_at < '2012-02-06 20:16:50.376654' group by year,month order by year desc,month desc limit 10 [0m
+Rendered vendor/plugins/archives_sidebar/app/views/archives_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/static_sidebar/app/views/static_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/meta_sidebar/app/views/meta_sidebar/_content.html.erb (0.0ms)
+  [1m[35mPage Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered themes/true-blue-3/views/articles/index.html.erb within layouts/default (748.6ms)
+Completed 200 OK in 842ms (Views: 764.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2012-02-06 12:16:50 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#stylesheets as 
+  Parameters: {"filename"=>"style.css"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:16:51.686760')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/stylesheets/style.css (0.0ms)
+Completed 200 OK in 31ms
+
+
+Started GET "/images/theme/rss.png" for 127.0.0.1 at 2012-02-06 12:16:51 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"rss.png"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:16:52.716129')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/rss.png (0.0ms)
+Completed 200 OK in 31ms
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2012-02-06 12:16:52 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"background.gif"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:16:53.651919')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/background.gif (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/categories" for 127.0.0.1 at 2012-02-06 12:17:04 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by CategoriesController#index as HTML
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:17:05.368089')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCategory Load (0.0ms)[0m  SELECT "categories".* FROM "categories" ORDER BY position ASC LIMIT 100 OFFSET 0
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" INNER JOIN "categorizations" ON "contents".id = "categorizations".article_id WHERE "contents"."type" = 'Article' AND (("categorizations".category_id = 1)) ORDER BY published_at DESC, created_at DESC[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mSidebar Load (0.0ms)[0m  [1mSELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't')
+  [1m[36mPage Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't') ORDER BY title[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Rendered vendor/plugins/page_sidebar/app/views/page_sidebar/_content.html.erb (78.0ms)
+  [1m[36mCategory Load (15.6ms)[0m  [1m
+ SELECT categories.id, categories.name, categories.permalink, categories.position, COUNT(articles.id) AS article_counter
+ FROM categories categories
+ LEFT OUTER JOIN categorizations articles_categories
+ ON articles_categories.category_id = categories.id
+ LEFT OUTER JOIN contents articles
+ ON (articles_categories.article_id = articles.id AND articles.published = 't')
+ GROUP BY categories.id, categories.name, categories.position, categories.permalink
+ ORDER BY position
+ [0m
+Rendered vendor/plugins/category_sidebar/app/views/category_sidebar/_content.html.erb (15.6ms)
+  [1m[35mContent Load (0.0ms)[0m  select count(*) as count, strftime('%Y', published_at) as year, strftime('%m', published_at) as month from contents where type='Article' and published = 't' and published_at < '2012-02-06 20:17:05.804791' group by year,month order by year desc,month desc limit 10 
+Rendered vendor/plugins/archives_sidebar/app/views/archives_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/static_sidebar/app/views/static_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/meta_sidebar/app/views/meta_sidebar/_content.html.erb (0.0ms)
+  [1m[36mPage Load (15.6ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Rendered themes/true-blue-3/views/categories/index.html.erb within layouts/default (608.3ms)
+Completed 200 OK in 764ms (Views: 701.8ms | ActiveRecord: 31.2ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2012-02-06 12:17:06 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#stylesheets as 
+  Parameters: {"filename"=>"style.css"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:17:07.036915')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/stylesheets/style.css (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2012-02-06 12:17:07 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"background.gif"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:17:08.050687')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/background.gif (0.0ms)
+Completed 200 OK in 47ms
+
+
+Started GET "/images/theme/rss.png" for 127.0.0.1 at 2012-02-06 12:17:08 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"rss.png"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:17:09.100851')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/rss.png (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/pages/about" for 127.0.0.1 at 2012-02-06 12:17:09 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ArticlesController#view_page as HTML
+  Parameters: {"name"=>"about"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:17:10.036641')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mPage Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."name" = 'about' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mTextFilter Load (0.0ms)[0m  SELECT "text_filters".* FROM "text_filters" WHERE "text_filters"."id" = 5 LIMIT 1
+  [1m[36mSidebar Load (0.0ms)[0m  [1mSELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't')
+  [1m[36mPage Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't') ORDER BY title[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Rendered vendor/plugins/page_sidebar/app/views/page_sidebar/_content.html.erb (0.0ms)
+  [1m[36mCategory Load (0.0ms)[0m  [1m
+ SELECT categories.id, categories.name, categories.permalink, categories.position, COUNT(articles.id) AS article_counter
+ FROM categories categories
+ LEFT OUTER JOIN categorizations articles_categories
+ ON articles_categories.category_id = categories.id
+ LEFT OUTER JOIN contents articles
+ ON (articles_categories.article_id = articles.id AND articles.published = 't')
+ GROUP BY categories.id, categories.name, categories.position, categories.permalink
+ ORDER BY position
+ [0m
+Rendered vendor/plugins/category_sidebar/app/views/category_sidebar/_content.html.erb (46.8ms)
+  [1m[35mContent Load (0.0ms)[0m  select count(*) as count, strftime('%Y', published_at) as year, strftime('%m', published_at) as month from contents where type='Article' and published = 't' and published_at < '2012-02-06 20:17:10.395361' group by year,month order by year desc,month desc limit 10 
+Rendered vendor/plugins/archives_sidebar/app/views/archives_sidebar/_content.html.erb (15.6ms)
+Rendered vendor/plugins/static_sidebar/app/views/static_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/meta_sidebar/app/views/meta_sidebar/_content.html.erb (15.6ms)
+  [1m[36mPage Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Rendered themes/true-blue-3/views/articles/view_page.html.erb within layouts/default (530.3ms)
+Completed 200 OK in 639ms (Views: 545.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2012-02-06 12:17:10 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#stylesheets as 
+  Parameters: {"filename"=>"style.css"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:17:11.580695')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/stylesheets/style.css (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/rss.png" for 127.0.0.1 at 2012-02-06 12:17:11 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"rss.png"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:17:12.672450')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/rss.png (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2012-02-06 12:17:12 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"background.gif"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:17:13.623836')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/background.gif (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-06 12:17:24 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ArticlesController#index as HTML
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:17:25.118056')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mArticle Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Article' AND (published = 't' AND published_at < '2012-02-06 20:17:25.133653') ORDER BY published_at DESC LIMIT 10 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mTextFilter Load (0.0ms)[0m  SELECT "text_filters".* FROM "text_filters" WHERE "text_filters"."id" = 5 LIMIT 1
+Rendered themes/true-blue-3/views/articles/_article_excerpt.html.erb (78.0ms)
+Rendered articles/_article_content.html.erb (93.6ms)
+Rendered articles/_protected_article_content.html.erb (109.2ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND ("feedback".article_id = 1 AND ("feedback"."published" = 't'))[0m
+Rendered themes/true-blue-3/views/articles/_article.html.erb (202.8ms)
+  [1m[35mSidebar Load (0.0ms)[0m  SELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't')[0m
+  [1m[35mPage Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't') ORDER BY title
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered vendor/plugins/page_sidebar/app/views/page_sidebar/_content.html.erb (93.6ms)
+  [1m[35mCategory Load (0.0ms)[0m  
+ SELECT categories.id, categories.name, categories.permalink, categories.position, COUNT(articles.id) AS article_counter
+ FROM categories categories
+ LEFT OUTER JOIN categorizations articles_categories
+ ON articles_categories.category_id = categories.id
+ LEFT OUTER JOIN contents articles
+ ON (articles_categories.article_id = articles.id AND articles.published = 't')
+ GROUP BY categories.id, categories.name, categories.position, categories.permalink
+ ORDER BY position
+ 
+Rendered vendor/plugins/category_sidebar/app/views/category_sidebar/_content.html.erb (15.6ms)
+  [1m[36mContent Load (0.0ms)[0m  [1mselect count(*) as count, strftime('%Y', published_at) as year, strftime('%m', published_at) as month from contents where type='Article' and published = 't' and published_at < '2012-02-06 20:17:25.632741' group by year,month order by year desc,month desc limit 10 [0m
+Rendered vendor/plugins/archives_sidebar/app/views/archives_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/static_sidebar/app/views/static_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/meta_sidebar/app/views/meta_sidebar/_content.html.erb (0.0ms)
+  [1m[35mPage Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered themes/true-blue-3/views/articles/index.html.erb within layouts/default (733.0ms)
+Completed 200 OK in 827ms (Views: 748.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2012-02-06 12:17:25 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#stylesheets as 
+  Parameters: {"filename"=>"style.css"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:17:26.849268')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/stylesheets/style.css (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/rss.png" for 127.0.0.1 at 2012-02-06 12:17:26 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"rss.png"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:17:27.816251')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/rss.png (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2012-02-06 12:17:27 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"background.gif"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:17:28.720848')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/background.gif (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/pages/about" for 127.0.0.1 at 2012-02-06 12:17:33 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ArticlesController#view_page as HTML
+  Parameters: {"name"=>"about"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:17:34.325190')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36mPage Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."name" = 'about' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mTextFilter Load (15.6ms)[0m  [1mSELECT "text_filters".* FROM "text_filters" WHERE "text_filters"."id" = 5 LIMIT 1[0m
+  [1m[35mSidebar Load (0.0ms)[0m  SELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't')[0m
+  [1m[35mPage Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't') ORDER BY title
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered vendor/plugins/page_sidebar/app/views/page_sidebar/_content.html.erb (0.0ms)
+  [1m[35mCategory Load (0.0ms)[0m  
+ SELECT categories.id, categories.name, categories.permalink, categories.position, COUNT(articles.id) AS article_counter
+ FROM categories categories
+ LEFT OUTER JOIN categorizations articles_categories
+ ON articles_categories.category_id = categories.id
+ LEFT OUTER JOIN contents articles
+ ON (articles_categories.article_id = articles.id AND articles.published = 't')
+ GROUP BY categories.id, categories.name, categories.position, categories.permalink
+ ORDER BY position
+ 
+Rendered vendor/plugins/category_sidebar/app/views/category_sidebar/_content.html.erb (15.6ms)
+  [1m[36mContent Load (0.0ms)[0m  [1mselect count(*) as count, strftime('%Y', published_at) as year, strftime('%m', published_at) as month from contents where type='Article' and published = 't' and published_at < '2012-02-06 20:17:34.652716' group by year,month order by year desc,month desc limit 10 [0m
+Rendered vendor/plugins/archives_sidebar/app/views/archives_sidebar/_content.html.erb (31.2ms)
+Rendered vendor/plugins/static_sidebar/app/views/static_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/meta_sidebar/app/views/meta_sidebar/_content.html.erb (0.0ms)
+  [1m[35mPage Load (15.6ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered themes/true-blue-3/views/articles/view_page.html.erb within layouts/default (530.3ms)
+Completed 200 OK in 655ms (Views: 561.5ms | ActiveRecord: 31.2ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2012-02-06 12:17:34 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#stylesheets as 
+  Parameters: {"filename"=>"style.css"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:17:35.869243')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/stylesheets/style.css (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2012-02-06 12:17:35 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"background.gif"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:17:36.820630')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/background.gif (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/rss.png" for 127.0.0.1 at 2012-02-06 12:17:36 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"rss.png"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-06 20:17:37.772016')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/rss.png (0.0ms)
+Completed 200 OK in 31ms
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at c:/ruby/bin/likh/config/environment.rb:5)
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+TypoPlugins: just registered plugin [TypoPlugins::Gravatar] for :avatar target.
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-06 16:43:52 -0800
+  Processing by ArticlesController#index as 
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:43:53.360155')
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mArticle Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Article' AND (published = 't' AND published_at < '2012-02-07 00:43:53.500549') ORDER BY published_at DESC LIMIT 10 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mTextFilter Load (15.6ms)[0m  SELECT "text_filters".* FROM "text_filters" WHERE "text_filters"."id" = 5 LIMIT 1
+Rendered themes/true-blue-3/views/articles/_article_excerpt.html.erb (78.0ms)
+Rendered articles/_article_content.html.erb (78.0ms)
+Rendered articles/_protected_article_content.html.erb (93.6ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND ("feedback".article_id = 1 AND ("feedback"."published" = 't'))[0m
+Rendered themes/true-blue-3/views/articles/_article.html.erb (218.4ms)
+  [1m[35mSidebar Load (0.0ms)[0m  SELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't')[0m
+  [1m[35mPage Load (15.6ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't') ORDER BY title
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered vendor/plugins/page_sidebar/app/views/page_sidebar/_content.html.erb (78.0ms)
+  [1m[35mCategory Load (0.0ms)[0m  
+ SELECT categories.id, categories.name, categories.permalink, categories.position, COUNT(articles.id) AS article_counter
+ FROM categories categories
+ LEFT OUTER JOIN categorizations articles_categories
+ ON articles_categories.category_id = categories.id
+ LEFT OUTER JOIN contents articles
+ ON (articles_categories.article_id = articles.id AND articles.published = 't')
+ GROUP BY categories.id, categories.name, categories.position, categories.permalink
+ ORDER BY position
+ 
+Rendered vendor/plugins/category_sidebar/app/views/category_sidebar/_content.html.erb (0.0ms)
+  [1m[36mContent Load (0.0ms)[0m  [1mselect count(*) as count, strftime('%Y', published_at) as year, strftime('%m', published_at) as month from contents where type='Article' and published = 't' and published_at < '2012-02-07 00:43:54.030925' group by year,month order by year desc,month desc limit 10 [0m
+Rendered vendor/plugins/archives_sidebar/app/views/archives_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/static_sidebar/app/views/static_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/meta_sidebar/app/views/meta_sidebar/_content.html.erb (15.6ms)
+  [1m[35mPage Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered themes/true-blue-3/views/articles/index.html.erb within layouts/default (826.8ms)
+Completed 200 OK in 1061ms (Views: 811.2ms | ActiveRecord: 31.2ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2012-02-06 16:43:54 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#stylesheets as 
+  Parameters: {"filename"=>"style.css"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:43:55.388064')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/stylesheets/style.css (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2012-02-06 16:43:55 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"background.gif"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:43:56.355220')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/background.gif (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/rss.png" for 127.0.0.1 at 2012-02-06 16:43:56 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"rss.png"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:43:57.291178')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/rss.png (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/categories" for 127.0.0.1 at 2012-02-06 16:44:06 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by CategoriesController#index as HTML
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:44:07.855105')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCategory Load (0.0ms)[0m  SELECT "categories".* FROM "categories" ORDER BY position ASC LIMIT 100 OFFSET 0
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" INNER JOIN "categorizations" ON "contents".id = "categorizations".article_id WHERE "contents"."type" = 'Article' AND (("categorizations".category_id = 1)) ORDER BY published_at DESC, created_at DESC[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mSidebar Load (15.6ms)[0m  [1mSELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't')
+  [1m[36mPage Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't') ORDER BY title[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Rendered vendor/plugins/page_sidebar/app/views/page_sidebar/_content.html.erb (78.0ms)
+  [1m[36mCategory Load (0.0ms)[0m  [1m
+ SELECT categories.id, categories.name, categories.permalink, categories.position, COUNT(articles.id) AS article_counter
+ FROM categories categories
+ LEFT OUTER JOIN categorizations articles_categories
+ ON articles_categories.category_id = categories.id
+ LEFT OUTER JOIN contents articles
+ ON (articles_categories.article_id = articles.id AND articles.published = 't')
+ GROUP BY categories.id, categories.name, categories.position, categories.permalink
+ ORDER BY position
+ [0m
+Rendered vendor/plugins/category_sidebar/app/views/category_sidebar/_content.html.erb (0.0ms)
+  [1m[35mContent Load (0.0ms)[0m  select count(*) as count, strftime('%Y', published_at) as year, strftime('%m', published_at) as month from contents where type='Article' and published = 't' and published_at < '2012-02-07 00:44:08.323084' group by year,month order by year desc,month desc limit 10 
+Rendered vendor/plugins/archives_sidebar/app/views/archives_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/static_sidebar/app/views/static_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/meta_sidebar/app/views/meta_sidebar/_content.html.erb (0.0ms)
+  [1m[36mPage Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Rendered themes/true-blue-3/views/categories/index.html.erb within layouts/default (592.8ms)
+Completed 200 OK in 749ms (Views: 702.0ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2012-02-06 16:44:08 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#stylesheets as 
+  Parameters: {"filename"=>"style.css"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:44:09.571028')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/stylesheets/style.css (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/rss.png" for 127.0.0.1 at 2012-02-06 16:44:09 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"rss.png"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:44:10.538184')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/rss.png (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2012-02-06 16:44:10 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"background.gif"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:44:11.458543')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/background.gif (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-06 16:44:18 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ArticlesController#index as HTML
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:44:20.070156')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mArticle Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Article' AND (published = 't' AND published_at < '2012-02-07 00:44:20.070156') ORDER BY published_at DESC LIMIT 10 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mTextFilter Load (0.0ms)[0m  SELECT "text_filters".* FROM "text_filters" WHERE "text_filters"."id" = 5 LIMIT 1
+Rendered themes/true-blue-3/views/articles/_article_excerpt.html.erb (31.2ms)
+Rendered articles/_article_content.html.erb (46.8ms)
+Rendered articles/_protected_article_content.html.erb (62.4ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND ("feedback".article_id = 1 AND ("feedback"."published" = 't'))[0m
+Rendered themes/true-blue-3/views/articles/_article.html.erb (202.8ms)
+  [1m[35mSidebar Load (0.0ms)[0m  SELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't')[0m
+  [1m[35mPage Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't') ORDER BY title
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered vendor/plugins/page_sidebar/app/views/page_sidebar/_content.html.erb (78.0ms)
+  [1m[35mCategory Load (0.0ms)[0m  
+ SELECT categories.id, categories.name, categories.permalink, categories.position, COUNT(articles.id) AS article_counter
+ FROM categories categories
+ LEFT OUTER JOIN categorizations articles_categories
+ ON articles_categories.category_id = categories.id
+ LEFT OUTER JOIN contents articles
+ ON (articles_categories.article_id = articles.id AND articles.published = 't')
+ GROUP BY categories.id, categories.name, categories.position, categories.permalink
+ ORDER BY position
+ 
+Rendered vendor/plugins/category_sidebar/app/views/category_sidebar/_content.html.erb (0.0ms)
+  [1m[36mContent Load (0.0ms)[0m  [1mselect count(*) as count, strftime('%Y', published_at) as year, strftime('%m', published_at) as month from contents where type='Article' and published = 't' and published_at < '2012-02-07 00:44:20.569334' group by year,month order by year desc,month desc limit 10 [0m
+Rendered vendor/plugins/archives_sidebar/app/views/archives_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/static_sidebar/app/views/static_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/meta_sidebar/app/views/meta_sidebar/_content.html.erb (0.0ms)
+  [1m[35mPage Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered themes/true-blue-3/views/articles/index.html.erb within layouts/default (780.0ms)
+Completed 200 OK in 827ms (Views: 780.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2012-02-06 16:44:20 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#stylesheets as 
+  Parameters: {"filename"=>"style.css"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:44:21.817278')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/stylesheets/style.css (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/rss.png" for 127.0.0.1 at 2012-02-06 16:44:21 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"rss.png"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:44:22.800034')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/rss.png (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2012-02-06 16:44:22 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"background.gif"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:44:23.782790')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/background.gif (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/admin" for 127.0.0.1 at 2012-02-06 16:45:02 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by Admin::DashboardController#index as HTML
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:45:05.480519')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+Redirected to http://localhost:3000/accounts/login
+Completed 302 Found in 16ms
+
+
+Started GET "/accounts/login" for 127.0.0.1 at 2012-02-06 16:45:05 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by AccountsController#login as HTML
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:45:06.416477')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "users"
+Rendered accounts/login.html.erb within layouts/accounts (15.6ms)
+Completed 200 OK in 109ms (Views: 78.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/accounts/login" for 127.0.0.1 at 2012-02-06 16:45:40 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by AccountsController#login as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3mz3h83i3si1T/ppDzNO4HUJedvVMuyD0jkZ0w93uxY=", "user"=>{"login"=>"admin ", "password"=>"[FILTERED]"}, "login"=>"Submit"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:45:41.478903')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE (login = 'admin ' AND password = '269ba038a4734705420b93847586876b7110e5b6' AND state = 'active') LIMIT 1[0m
+Rendered accounts/login.html.erb within layouts/accounts (15.6ms)
+Completed 200 OK in 62ms (Views: 46.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/accounts/login" for 127.0.0.1 at 2012-02-06 16:45:53 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by AccountsController#login as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3mz3h83i3si1T/ppDzNO4HUJedvVMuyD0jkZ0w93uxY=", "user"=>{"login"=>"admin", "password"=>"[FILTERED]"}, "remember_me"=>"1", "login"=>"Submit"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:45:54.078338')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE (login = 'admin' AND password = '269ba038a4734705420b93847586876b7110e5b6' AND state = 'active') LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "users" SET "remember_token_expires_at" = '2012-02-21 00:45:54.093937', "remember_token" = '9e8a512238017a7b01794ab634800d5e05d1bc16', "settings" = '---
+firstname: Amol
+lastname: Joshi
+nickname: Amol
+editor: visual
+url: ''''
+show_url: false
+msn: ''''
+show_msn: false
+yahoo: ''''
+show_yahoo: false
+jabber: ''''
+show_jabber: false
+aim: ''''
+show_aim: false
+twitter: ''''
+show_twitter: false
+description: ''''
+' WHERE "users"."id" = 1
+  [1m[36mProfile Load (0.0ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "users" SET "last_connection" = '2012-02-07 00:45:54.281129', "settings" = '---
+firstname: Amol
+lastname: Joshi
+nickname: Amol
+editor: visual
+url: ''''
+show_url: false
+msn: ''''
+show_msn: false
+yahoo: ''''
+show_yahoo: false
+jabber: ''''
+show_jabber: false
+aim: ''''
+show_aim: false
+twitter: ''''
+show_twitter: false
+description: ''''
+' WHERE "users"."id" = 1
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 218ms
+
+
+Started GET "/admin" for 127.0.0.1 at 2012-02-06 16:45:54 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by Admin::DashboardController#index as HTML
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:45:55.263884')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.0ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Article' AND (published = 't' and published_at > NULL)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE ((("feedback"."type" = 'Feedback' OR "feedback"."type" = 'Comment') OR "feedback"."type" = 'Trackback')) AND (state in ('presumed_ham','ham') and published_at > NULL)[0m
+  [1m[35mComment Load (15.6ms)[0m  SELECT "feedback".* FROM "feedback" WHERE "feedback"."type" = 'Comment' AND (published = 't') ORDER BY created_at DESC LIMIT 5
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Article' AND (published = 't') ORDER BY published_at DESC LIMIT 5[0m
+  [1m[35mArticle Load (0.0ms)[0m  SELECT contents.*, comment_counts.count AS comment_count FROM contents, (SELECT feedback.article_id AS article_id, COUNT(feedback.id) as count FROM feedback WHERE feedback.state IN ('presumed_ham', 'ham') GROUP BY feedback.article_id ORDER BY count DESC LIMIT 9) AS comment_counts WHERE "contents"."type" = 'Article' AND (comment_counts.article_id = contents.id AND published = 't') ORDER BY comment_counts.count DESC LIMIT 5
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Article' AND "contents"."published" = 't'[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Article' AND "contents"."user_id" = 1 AND "contents"."state" = 'published'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND (state != 'spam')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND "feedback"."state" = 'spam'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND "feedback"."state" = 'presumed_spam'[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "categories"
+Rendered admin/dashboard/_overview.html.erb (0.0ms)
+Rendered admin/dashboard/_welcome.html.erb (0.0ms)
+Rendered admin/dashboard/_inbound.html.erb (0.0ms)
+Rendered admin/dashboard/_comments.html.erb (0.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered admin/dashboard/_posts.html.erb (31.2ms)
+Rendered admin/dashboard/_popular.html.erb (0.0ms)
+Rendered admin/dashboard/_typo_dev.html.erb (0.0ms)
+Rendered admin/dashboard/index.html.erb within layouts/administration (187.2ms)
+Completed 200 OK in 2955ms (Views: 249.6ms | ActiveRecord: 15.6ms)
+
+
+Started POST "/accounts/login" for 127.0.0.1 at 2012-02-06 16:45:58 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by AccountsController#login as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3mz3h83i3si1T/ppDzNO4HUJedvVMuyD0jkZ0w93uxY=", "user"=>{"login"=>"admin", "password"=>"[FILTERED]"}, "remember_me"=>"1", "login"=>"Submit"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:45:59.077313')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 31ms
+
+
+Started GET "/admin" for 127.0.0.1 at 2012-02-06 16:45:59 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by Admin::DashboardController#index as HTML
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:46:00.091267')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.0ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Article' AND (published = 't' and published_at > NULL)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE ((("feedback"."type" = 'Feedback' OR "feedback"."type" = 'Comment') OR "feedback"."type" = 'Trackback')) AND (state in ('presumed_ham','ham') and published_at > NULL)[0m
+  [1m[35mComment Load (0.0ms)[0m  SELECT "feedback".* FROM "feedback" WHERE "feedback"."type" = 'Comment' AND (published = 't') ORDER BY created_at DESC LIMIT 5
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Article' AND (published = 't') ORDER BY published_at DESC LIMIT 5[0m
+  [1m[35mArticle Load (0.0ms)[0m  SELECT contents.*, comment_counts.count AS comment_count FROM contents, (SELECT feedback.article_id AS article_id, COUNT(feedback.id) as count FROM feedback WHERE feedback.state IN ('presumed_ham', 'ham') GROUP BY feedback.article_id ORDER BY count DESC LIMIT 9) AS comment_counts WHERE "contents"."type" = 'Article' AND (comment_counts.article_id = contents.id AND published = 't') ORDER BY comment_counts.count DESC LIMIT 5
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Article' AND "contents"."published" = 't'[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Article' AND "contents"."user_id" = 1 AND "contents"."state" = 'published'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND (state != 'spam')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND "feedback"."state" = 'spam'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND "feedback"."state" = 'presumed_spam'[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "categories"
+Rendered admin/dashboard/_overview.html.erb (0.0ms)
+Rendered admin/dashboard/_welcome.html.erb (0.0ms)
+Rendered admin/dashboard/_inbound.html.erb (0.0ms)
+Rendered admin/dashboard/_comments.html.erb (0.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered admin/dashboard/_posts.html.erb (15.6ms)
+Rendered admin/dashboard/_popular.html.erb (0.0ms)
+Rendered admin/dashboard/_typo_dev.html.erb (0.0ms)
+Rendered admin/dashboard/index.html.erb within layouts/administration (109.2ms)
+Completed 200 OK in 2029ms (Views: 124.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/accounts/login" for 127.0.0.1 at 2012-02-06 16:46:02 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by AccountsController#login as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3mz3h83i3si1T/ppDzNO4HUJedvVMuyD0jkZ0w93uxY=", "user"=>{"login"=>"admin", "password"=>"[FILTERED]"}, "remember_me"=>"1", "login"=>"Submit"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:46:03.055934')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 31ms
+
+
+Started GET "/admin" for 127.0.0.1 at 2012-02-06 16:46:03 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by Admin::DashboardController#index as HTML
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:46:04.054289')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.0ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Article' AND (published = 't' and published_at > NULL)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE ((("feedback"."type" = 'Feedback' OR "feedback"."type" = 'Comment') OR "feedback"."type" = 'Trackback')) AND (state in ('presumed_ham','ham') and published_at > NULL)[0m
+  [1m[35mComment Load (0.0ms)[0m  SELECT "feedback".* FROM "feedback" WHERE "feedback"."type" = 'Comment' AND (published = 't') ORDER BY created_at DESC LIMIT 5
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Article' AND (published = 't') ORDER BY published_at DESC LIMIT 5[0m
+  [1m[35mArticle Load (0.0ms)[0m  SELECT contents.*, comment_counts.count AS comment_count FROM contents, (SELECT feedback.article_id AS article_id, COUNT(feedback.id) as count FROM feedback WHERE feedback.state IN ('presumed_ham', 'ham') GROUP BY feedback.article_id ORDER BY count DESC LIMIT 9) AS comment_counts WHERE "contents"."type" = 'Article' AND (comment_counts.article_id = contents.id AND published = 't') ORDER BY comment_counts.count DESC LIMIT 5
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Article' AND "contents"."published" = 't'[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Article' AND "contents"."user_id" = 1 AND "contents"."state" = 'published'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND (state != 'spam')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND "feedback"."state" = 'spam'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND "feedback"."state" = 'presumed_spam'[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "categories"
+Rendered admin/dashboard/_overview.html.erb (0.0ms)
+Rendered admin/dashboard/_welcome.html.erb (0.0ms)
+Rendered admin/dashboard/_inbound.html.erb (0.0ms)
+Rendered admin/dashboard/_comments.html.erb (0.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered admin/dashboard/_posts.html.erb (15.6ms)
+Rendered admin/dashboard/_popular.html.erb (0.0ms)
+Rendered admin/dashboard/_typo_dev.html.erb (0.0ms)
+Rendered admin/dashboard/index.html.erb within layouts/administration (140.4ms)
+Completed 200 OK in 619ms (Views: 171.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/accounts/login" for 127.0.0.1 at 2012-02-06 16:46:04 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by AccountsController#login as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3mz3h83i3si1T/ppDzNO4HUJedvVMuyD0jkZ0w93uxY=", "user"=>{"login"=>"admin", "password"=>"[FILTERED]"}, "login"=>"Submit"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:46:05.609419')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 78ms
+
+
+Started GET "/admin" for 127.0.0.1 at 2012-02-06 16:46:05 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by Admin::DashboardController#index as HTML
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:46:06.685771')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (15.6ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Article' AND (published = 't' and published_at > NULL)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE ((("feedback"."type" = 'Feedback' OR "feedback"."type" = 'Comment') OR "feedback"."type" = 'Trackback')) AND (state in ('presumed_ham','ham') and published_at > NULL)[0m
+  [1m[35mComment Load (0.0ms)[0m  SELECT "feedback".* FROM "feedback" WHERE "feedback"."type" = 'Comment' AND (published = 't') ORDER BY created_at DESC LIMIT 5
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Article' AND (published = 't') ORDER BY published_at DESC LIMIT 5[0m
+  [1m[35mArticle Load (0.0ms)[0m  SELECT contents.*, comment_counts.count AS comment_count FROM contents, (SELECT feedback.article_id AS article_id, COUNT(feedback.id) as count FROM feedback WHERE feedback.state IN ('presumed_ham', 'ham') GROUP BY feedback.article_id ORDER BY count DESC LIMIT 9) AS comment_counts WHERE "contents"."type" = 'Article' AND (comment_counts.article_id = contents.id AND published = 't') ORDER BY comment_counts.count DESC LIMIT 5
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Article' AND "contents"."published" = 't'[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Article' AND "contents"."user_id" = 1 AND "contents"."state" = 'published'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND (state != 'spam')[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND "feedback"."state" = 'spam'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND "feedback"."state" = 'presumed_spam'[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "categories"
+Rendered admin/dashboard/_overview.html.erb (15.6ms)
+Rendered admin/dashboard/_welcome.html.erb (0.0ms)
+Rendered admin/dashboard/_inbound.html.erb (0.0ms)
+Rendered admin/dashboard/_comments.html.erb (0.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered admin/dashboard/_posts.html.erb (15.6ms)
+Rendered admin/dashboard/_popular.html.erb (0.0ms)
+Rendered admin/dashboard/_typo_dev.html.erb (0.0ms)
+Rendered admin/dashboard/index.html.erb within layouts/administration (93.6ms)
+Completed 200 OK in 593ms (Views: 124.8ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/admin/content" for 127.0.0.1 at 2012-02-06 16:46:17 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by Admin::ContentController#index as HTML
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:46:18.862025')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.0ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Article' AND (state <> 'draft') ORDER BY created_at DESC, published_at DESC LIMIT 10 OFFSET 0[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Article' AND (state = 'draft')
+  [1m[36mCategory Load (0.0ms)[0m  [1mSELECT "categories".* FROM "categories" ORDER BY position ASC[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT published_at AS publication FROM contents WHERE published_at is not NULL AND type='Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "redirects" INNER JOIN "redirections" ON "redirects".id = "redirections".redirect_id WHERE (("redirections".content_id = 1))[0m
+  [1m[35mCategory Load (0.0ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "categorizations" ON "categories".id = "categorizations".category_id WHERE (("categorizations".article_id = 1)) ORDER BY position ASC
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mComment Load (0.0ms)[0m  SELECT "feedback".* FROM "feedback" WHERE "feedback"."type" = 'Comment' AND "feedback"."state" IN ('presumed_ham', 'ham') AND ("feedback".article_id = 1) ORDER BY created_at ASC
+Rendered admin/content/_article_list.html.erb (140.4ms)
+Rendered admin/content/index.html.erb within layouts/administration (171.6ms)
+Completed 200 OK in 421ms (Views: 218.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/pages" for 127.0.0.1 at 2012-02-06 16:46:23 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by Admin::PagesController#index as HTML
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:46:24.910553')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.0ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mPage Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' ORDER BY title ASC LIMIT 10 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "redirects" INNER JOIN "redirections" ON "redirects".id = "redirections".redirect_id WHERE (("redirections".content_id = 2))
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Rendered admin/pages/_pages.html.erb (109.2ms)
+Rendered admin/pages/index.html.erb within layouts/administration (140.4ms)
+Completed 200 OK in 281ms (Views: 156.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/pages" for 127.0.0.1 at 2012-02-06 16:46:25 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by Admin::PagesController#index as HTML
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:46:26.111700')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.0ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mPage Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' ORDER BY title ASC LIMIT 10 OFFSET 0[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "redirects" INNER JOIN "redirections" ON "redirects".id = "redirections".redirect_id WHERE (("redirections".content_id = 2))[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Rendered admin/pages/_pages.html.erb (62.4ms)
+Rendered admin/pages/index.html.erb within layouts/administration (93.6ms)
+Completed 200 OK in 265ms (Views: 109.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/resources" for 127.0.0.1 at 2012-02-06 16:46:36 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by Admin::ResourcesController#index as HTML
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:46:37.395193')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (15.6ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mResource Load (0.0ms)[0m  SELECT "resources".* FROM "resources" ORDER BY created_at DESC LIMIT 10 OFFSET 0
+Rendered admin/resources/_upload.html.erb (0.0ms)
+Rendered admin/resources/index.html.erb within layouts/administration (78.0ms)
+Completed 200 OK in 296ms (Views: 109.2ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/admin/themes" for 127.0.0.1 at 2012-02-06 16:46:45 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by Admin::ThemesController#index as HTML
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:46:47.015161')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.0ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Filter markdown failed: uninitialized constant Typo::Textfilter::Markdown::BlueCloth
+Filter markdown failed: uninitialized constant Typo::Textfilter::Markdown::BlueCloth
+Filter markdown failed: uninitialized constant Typo::Textfilter::Markdown::BlueCloth
+Filter markdown failed: uninitialized constant Typo::Textfilter::Markdown::BlueCloth
+Filter markdown failed: uninitialized constant Typo::Textfilter::Markdown::BlueCloth
+Filter markdown failed: uninitialized constant Typo::Textfilter::Markdown::BlueCloth
+Rendered admin/themes/index.html.erb within layouts/administration (15.6ms)
+Completed 200 OK in 640ms (Views: 93.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/themes/preview?skip_relative_url_root=true&theme=scribbish" for 127.0.0.1 at 2012-02-06 16:46:47 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by Admin::ThemesController#preview as 
+  Parameters: {"skip_relative_url_root"=>"true", "theme"=>"scribbish", "id"=>nil}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:46:48.777882')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.0ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Sent file c:/ruby/bin/likh/themes/scribbish/preview.png (0.0ms)
+Completed 200 OK in 62ms
+
+
+Started GET "/admin/themes/preview?skip_relative_url_root=true&theme=dirtylicious" for 127.0.0.1 at 2012-02-06 16:46:48 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by Admin::ThemesController#preview as 
+  Parameters: {"skip_relative_url_root"=>"true", "theme"=>"dirtylicious", "id"=>nil}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:46:49.869833')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (15.6ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Sent file c:/ruby/bin/likh/themes/dirtylicious/preview.png (0.0ms)
+Completed 200 OK in 109ms
+
+
+Started GET "/admin/themes/preview?skip_relative_url_root=true&theme=standard_issue" for 127.0.0.1 at 2012-02-06 16:46:49 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by Admin::ThemesController#preview as 
+  Parameters: {"skip_relative_url_root"=>"true", "theme"=>"standard_issue", "id"=>nil}
+  [1m[36mTrigger Load (15.6ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:46:51.024181')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.0ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Sent file c:/ruby/bin/likh/themes/standard_issue/preview.png (0.0ms)
+Completed 200 OK in 125ms
+
+
+Started GET "/admin/themes/preview?skip_relative_url_root=true&theme=true-red" for 127.0.0.1 at 2012-02-06 16:46:51 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by Admin::ThemesController#preview as 
+  Parameters: {"skip_relative_url_root"=>"true", "theme"=>"true-red", "id"=>nil}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:46:52.240927')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mUser Load (15.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.0ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Sent file c:/ruby/bin/likh/themes/true-red/preview.png (46.8ms)
+Completed 200 OK in 172ms
+
+
+Started GET "/admin/themes/preview?skip_relative_url_root=true&theme=true-blue-3" for 127.0.0.1 at 2012-02-06 16:46:52 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by Admin::ThemesController#preview as 
+  Parameters: {"skip_relative_url_root"=>"true", "theme"=>"true-blue-3", "id"=>nil}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:46:53.426474')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.0ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mSQL (15.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Sent file c:/ruby/bin/likh/themes/true-blue-3/preview.png (62.4ms)
+Completed 200 OK in 172ms
+
+
+Started GET "/admin/themes/preview?skip_relative_url_root=true&theme=typographic" for 127.0.0.1 at 2012-02-06 16:46:53 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by Admin::ThemesController#preview as 
+  Parameters: {"skip_relative_url_root"=>"true", "theme"=>"typographic", "id"=>nil}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:46:54.580822')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.0ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Sent file c:/ruby/bin/likh/themes/typographic/preview.png (0.0ms)
+Completed 200 OK in 109ms
+
+
+Started GET "/admin" for 127.0.0.1 at 2012-02-06 16:47:01 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by Admin::DashboardController#index as HTML
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:47:03.036442')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.0ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Article' AND (published = 't' and published_at > NULL)[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "feedback" WHERE ((("feedback"."type" = 'Feedback' OR "feedback"."type" = 'Comment') OR "feedback"."type" = 'Trackback')) AND (state in ('presumed_ham','ham') and published_at > NULL)
+  [1m[36mComment Load (0.0ms)[0m  [1mSELECT "feedback".* FROM "feedback" WHERE "feedback"."type" = 'Comment' AND (published = 't') ORDER BY created_at DESC LIMIT 5[0m
+  [1m[35mArticle Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Article' AND (published = 't') ORDER BY published_at DESC LIMIT 5
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT contents.*, comment_counts.count AS comment_count FROM contents, (SELECT feedback.article_id AS article_id, COUNT(feedback.id) as count FROM feedback WHERE feedback.state IN ('presumed_ham', 'ham') GROUP BY feedback.article_id ORDER BY count DESC LIMIT 9) AS comment_counts WHERE "contents"."type" = 'Article' AND (comment_counts.article_id = contents.id AND published = 't') ORDER BY comment_counts.count DESC LIMIT 5[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Article' AND "contents"."published" = 't'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Article' AND "contents"."user_id" = 1 AND "contents"."state" = 'published'[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND (state != 'spam')
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND "feedback"."state" = 'spam'[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND "feedback"."state" = 'presumed_spam'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "categories"[0m
+Rendered admin/dashboard/_overview.html.erb (0.0ms)
+Rendered admin/dashboard/_welcome.html.erb (15.6ms)
+Rendered admin/dashboard/_inbound.html.erb (0.0ms)
+Rendered admin/dashboard/_comments.html.erb (0.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Rendered admin/dashboard/_posts.html.erb (31.2ms)
+Rendered admin/dashboard/_popular.html.erb (0.0ms)
+Rendered admin/dashboard/_typo_dev.html.erb (0.0ms)
+Rendered admin/dashboard/index.html.erb within layouts/administration (109.2ms)
+Completed 200 OK in 515ms (Views: 124.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/content" for 127.0.0.1 at 2012-02-06 16:47:10 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by Admin::ContentController#index as HTML
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:47:11.497663')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.0ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mArticle Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Article' AND (state <> 'draft') ORDER BY created_at DESC, published_at DESC LIMIT 10 OFFSET 0
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Article' AND (state = 'draft')[0m
+  [1m[35mCategory Load (15.6ms)[0m  SELECT "categories".* FROM "categories" ORDER BY position ASC
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mArticle Load (0.0ms)[0m  SELECT published_at AS publication FROM contents WHERE published_at is not NULL AND type='Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "redirects" INNER JOIN "redirections" ON "redirects".id = "redirections".redirect_id WHERE (("redirections".content_id = 1))
+  [1m[36mCategory Load (0.0ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "categorizations" ON "categories".id = "categorizations".category_id WHERE (("categorizations".article_id = 1)) ORDER BY position ASC[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mComment Load (0.0ms)[0m  [1mSELECT "feedback".* FROM "feedback" WHERE "feedback"."type" = 'Comment' AND "feedback"."state" IN ('presumed_ham', 'ham') AND ("feedback".article_id = 1) ORDER BY created_at ASC[0m
+Rendered admin/content/_article_list.html.erb (124.8ms)
+Rendered admin/content/index.html.erb within layouts/administration (171.6ms)
+Completed 200 OK in 374ms (Views: 171.6ms | ActiveRecord: 31.2ms)
+
+
+Started GET "/admin/content/new" for 127.0.0.1 at 2012-02-06 16:47:15 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by Admin::ContentController#new as HTML
+  Parameters: {"id"=>nil}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:47:16.645031')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.0ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mTextFilter Load (0.0ms)[0m  [1mSELECT "text_filters".* FROM "text_filters" WHERE "text_filters"."name" = '1' LIMIT 1[0m
+  [1m[35mTextFilter Load (0.0ms)[0m  SELECT "text_filters".* FROM "text_filters" WHERE "text_filters"."name" = 'none' LIMIT 1
+  [1m[36mPostType Load (0.0ms)[0m  [1mSELECT "post_types".* FROM "post_types"[0m
+#<Article:0x3eddbf0> leaving state Article::States::New
+#<Article:0x3eddbf0> entering state Article::States::JustPublished
+#<Article:0x3eddbf0> leaving state Article::States::JustPublished
+#<Article:0x3eddbf0> entering state Article::States::Published
+  [1m[35mResource Load (0.0ms)[0m  SELECT "resources".* FROM "resources" WHERE (mime NOT LIKE '%image%') ORDER BY filename
+  [1m[36mResource Load (0.0ms)[0m  [1mSELECT "resources".* FROM "resources" WHERE (mime LIKE '%image%') ORDER BY created_at DESC LIMIT 10 OFFSET 0[0m
+  [1m[35mTextFilter Load (0.0ms)[0m  SELECT "text_filters".* FROM "text_filters" WHERE "text_filters"."id" = 1 LIMIT 1
+  [1m[36mCategory Load (0.0ms)[0m  [1mSELECT "categories".* FROM "categories" ORDER BY position ASC[0m
+Rendered admin/content/_categories.html.erb (62.4ms)
+Rendered admin/content/_attachment.html.erb (0.0ms)
+  [1m[35mTextFilter Load (0.0ms)[0m  SELECT "text_filters".* FROM "text_filters"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "text_filters".* FROM "text_filters" WHERE "text_filters"."id" = 1 LIMIT 1[0m
+Rendered admin/content/_form.html.erb (140.4ms)
+Rendered admin/shared/_edit.html.erb (156.0ms)
+Rendered admin/content/new.html.erb within layouts/administration (187.2ms)
+Completed 200 OK in 499ms (Views: 202.8ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-06 16:47:50 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ArticlesController#index as HTML
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:47:51.661459')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35mArticle Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Article' AND (published = 't' AND published_at < '2012-02-07 00:47:51.661459') ORDER BY published_at DESC LIMIT 10 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mTextFilter Load (0.0ms)[0m  SELECT "text_filters".* FROM "text_filters" WHERE "text_filters"."id" = 5 LIMIT 1
+Rendered themes/true-blue-3/views/articles/_article_excerpt.html.erb (46.8ms)
+Rendered articles/_article_content.html.erb (46.8ms)
+Rendered articles/_protected_article_content.html.erb (62.4ms)
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" = 'Comment' AND ("feedback".article_id = 1 AND ("feedback"."published" = 't'))[0m
+Rendered themes/true-blue-3/views/articles/_article.html.erb (202.8ms)
+  [1m[35mSidebar Load (0.0ms)[0m  SELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't')[0m
+  [1m[35mPage Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't') ORDER BY title
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered vendor/plugins/page_sidebar/app/views/page_sidebar/_content.html.erb (93.6ms)
+  [1m[35mCategory Load (0.0ms)[0m  
+ SELECT categories.id, categories.name, categories.permalink, categories.position, COUNT(articles.id) AS article_counter
+ FROM categories categories
+ LEFT OUTER JOIN categorizations articles_categories
+ ON articles_categories.category_id = categories.id
+ LEFT OUTER JOIN contents articles
+ ON (articles_categories.article_id = articles.id AND articles.published = 't')
+ GROUP BY categories.id, categories.name, categories.position, categories.permalink
+ ORDER BY position
+ 
+Rendered vendor/plugins/category_sidebar/app/views/category_sidebar/_content.html.erb (15.6ms)
+  [1m[36mContent Load (0.0ms)[0m  [1mselect count(*) as count, strftime('%Y', published_at) as year, strftime('%m', published_at) as month from contents where type='Article' and published = 't' and published_at < '2012-02-07 00:47:52.238633' group by year,month order by year desc,month desc limit 10 [0m
+Rendered vendor/plugins/archives_sidebar/app/views/archives_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/static_sidebar/app/views/static_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/meta_sidebar/app/views/meta_sidebar/_content.html.erb (0.0ms)
+  [1m[35mPage Load (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Rendered themes/true-blue-3/views/articles/index.html.erb within layouts/default (811.2ms)
+Completed 200 OK in 905ms (Views: 826.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2012-02-06 16:47:52 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#stylesheets as 
+  Parameters: {"filename"=>"style.css"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:47:53.502177')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/stylesheets/style.css (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2012-02-06 16:47:53 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"background.gif"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:47:54.531731')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/background.gif (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/rss.png" for 127.0.0.1 at 2012-02-06 16:47:54 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"rss.png"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:47:55.483288')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/rss.png (0.0ms)
+Completed 200 OK in 31ms
+
+
+Started GET "/categories" for 127.0.0.1 at 2012-02-06 16:49:17 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by CategoriesController#index as HTML
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:49:18.305171')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCategory Load (0.0ms)[0m  SELECT "categories".* FROM "categories" ORDER BY position ASC LIMIT 100 OFFSET 0
+  [1m[36mArticle Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" INNER JOIN "categorizations" ON "contents".id = "categorizations".article_id WHERE "contents"."type" = 'Article' AND (("categorizations".category_id = 1)) ORDER BY published_at DESC, created_at DESC[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mSidebar Load (0.0ms)[0m  [1mSELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT COUNT(*) FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't')
+  [1m[36mPage Load (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND (published = 't') ORDER BY title[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Rendered vendor/plugins/page_sidebar/app/views/page_sidebar/_content.html.erb (78.0ms)
+  [1m[36mCategory Load (0.0ms)[0m  [1m
+ SELECT categories.id, categories.name, categories.permalink, categories.position, COUNT(articles.id) AS article_counter
+ FROM categories categories
+ LEFT OUTER JOIN categorizations articles_categories
+ ON articles_categories.category_id = categories.id
+ LEFT OUTER JOIN contents articles
+ ON (articles_categories.article_id = articles.id AND articles.published = 't')
+ GROUP BY categories.id, categories.name, categories.position, categories.permalink
+ ORDER BY position
+ [0m
+Rendered vendor/plugins/category_sidebar/app/views/category_sidebar/_content.html.erb (0.0ms)
+  [1m[35mContent Load (0.0ms)[0m  select count(*) as count, strftime('%Y', published_at) as year, strftime('%m', published_at) as month from contents where type='Article' and published = 't' and published_at < '2012-02-07 00:49:18.804349' group by year,month order by year desc,month desc limit 10 
+Rendered vendor/plugins/archives_sidebar/app/views/archives_sidebar/_content.html.erb (0.0ms)
+Rendered vendor/plugins/static_sidebar/app/views/static_sidebar/_content.html.erb (15.6ms)
+Rendered vendor/plugins/meta_sidebar/app/views/meta_sidebar/_content.html.erb (0.0ms)
+  [1m[36mPage Load (15.6ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" = 'Page' AND "contents"."published" = 't'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Rendered themes/true-blue-3/views/categories/index.html.erb within layouts/default (686.4ms)
+Completed 200 OK in 842ms (Views: 795.6ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2012-02-06 16:49:19 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#stylesheets as 
+  Parameters: {"filename"=>"style.css"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:49:20.067892')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/stylesheets/style.css (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/rss.png" for 127.0.0.1 at 2012-02-06 16:49:20 -0800
+  [1m[35mBlog Load (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"rss.png"}
+  [1m[36mTrigger Load (0.0ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:49:21.066247')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/rss.png (0.0ms)
+Completed 200 OK in 16ms
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2012-02-06 16:49:21 -0800
+  [1m[36mBlog Load (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Processing by ThemeController#images as 
+  Parameters: {"filename"=>"background.gif"}
+  [1m[35mTrigger Load (0.0ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2012-02-07 00:49:22.064602')
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file c:/ruby/bin/likh/themes/true-blue-3/images/background.gif (0.0ms)
+Completed 200 OK in 31ms
